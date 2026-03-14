@@ -1,0 +1,60 @@
+# Valluvam — Theme D: Dark Crimson & Gold
+# Apply with: patch -p0 < valluvam-theme-d.patch
+# File: css/design-system.css  (colour variables block inside :root)
+
+--- css/design-system.css
++++ css/design-system.css
+@@ -3,18 +3,18 @@
+ :root {
+-  /* Brand colours — rooted in Valluvam's maroon/gold identity */
+-  --maroon-950: #1a0608;
+-  --maroon-900: #2e0c10;
+-  --maroon-800: #4a1018;
+-  --maroon-700: #6b1720;
+-  --maroon-600: #8c2028;
+-  --maroon-500: #a82d35;
+-  --maroon-400: #c4434b;
++  /* ── Theme D: Dark Crimson & Gold ── */
++  --maroon-950: #0c0204;
++  --maroon-900: #130308;
++  --maroon-800: #200608;
++  --maroon-700: #3d0c12;
++  --maroon-600: #5e1219;
++  --maroon-500: #851a24;
++  --maroon-400: #b0262f;
+
+-  --gold-400:   #e8b84b;
+-  --gold-500:   #c99a2e;
+-  --gold-600:   #a67c1a;
+-  --gold-100:   #fdf3dc;
++  --gold-400:   #f0c040;
++  --gold-500:   #c99a20;
++  --gold-600:   #a67c10;
++  --gold-100:   #fff8ec;
+   --gold-50:    #fffdf5;
+
+-  --cream:      #faf6ef;
+-  --cream-dark: #f0e8d8;
+-  --warm-white: #fefcf8;
++  --cream:      #faf4e8;
++  --cream-dark: #f0e6cc;
++  --warm-white: #fffdf7;
+
+# File: css/home.css  (hero background gradients)
+
+--- css/home.css
++++ css/home.css
+@@ hero-bg background property
+-    radial-gradient(ellipse 60% 50% at 80% 50%, rgba(139, 32, 40, 0.4) 0%, transparent 70%),
+-    radial-gradient(ellipse 40% 60% at 20% 80%, rgba(201, 154, 46, 0.08) 0%, transparent 60%);
++    radial-gradient(ellipse 60% 50% at 80% 50%, rgba(94, 18, 25, 0.5) 0%, transparent 70%),
++    radial-gradient(ellipse 40% 60% at 20% 80%, rgba(201, 154, 32, 0.07) 0%, transparent 60%);
+
+# Across all .css files — box-shadow tint update
+# Run: find css/ -name "*.css" | xargs sed -i 's/rgba(46, 12, 16,/rgba(12, 2, 4,/g'
+
+--- (all css files)
++++ (all css files)
+-  box-shadow: ... rgba(46, 12, 16, 0.12);
++  box-shadow: ... rgba(12, 2, 4, 0.15);
+
