@@ -230,7 +230,7 @@ console.log('📁 Copying static files…');
 fs.mkdirSync(DIST, { recursive: true });
 
 // Copy all HTML, CSS, JS, assets — but skip _data, admin source, node_modules, _site
-const SKIP = new Set(['_data', '_site', 'node_modules', '.git', 'build.js', 'package.json', 'package-lock.json']);
+const SKIP = new Set(['_data', '_site', 'node_modules', '.git', 'build.js', 'package.json', 'package-lock.json', 'package-lock.json', 'server.js', '.do']);
 
 fs.readdirSync(ROOT).forEach(item => {
   if (SKIP.has(item)) return;
@@ -319,4 +319,23 @@ findHTML(ROOT, ROOT).forEach(rel => {
   writeHTML(rel, html);
 });
 
-console.log('\n✅ Build complete → _site/\n');
+// Validate build output
+const siteIndex = path.join(DIST, 'index.html');
+const siteCss   = path.join(DIST, 'css', 'design-system.css');
+const siteAssets = path.join(DIST, 'assets');
+
+if (!fs.existsSync(siteIndex)) {
+  console.error('❌ Build failed: _site/index.html missing');
+  process.exit(1);
+}
+if (!fs.existsSync(siteCss)) {
+  console.error('❌ Build failed: _site/css/design-system.css missing');
+  process.exit(1);
+}
+if (!fs.existsSync(siteAssets)) {
+  console.error('❌ Build failed: _site/assets/ missing');
+  process.exit(1);
+}
+
+const pageCount = fs.readdirSync(DIST).filter(f => f.endsWith('.html')).length;
+console.log(`\n✅ Build complete → _site/  (${pageCount} root pages, assets copied)\n`);
