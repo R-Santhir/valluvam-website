@@ -26,23 +26,40 @@
 }
 
 .nav-logo {
-  font-family: var(--font-display);
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: var(--gold-400);
-  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   transition: opacity 0.2s;
+  text-decoration: none;
 }
 .nav-logo:hover { opacity: 0.85; }
-.nav-logo span {
+
+.nav-logo-img {
+  height: 48px;
+  width: auto;
   display: block;
-  font-size: 0.55rem;
+  flex-shrink: 0;
+  /* Logo has transparent bg — looks great on dark nav */
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.4));
+}
+
+.nav-logo-text {
   font-family: var(--font-body);
+  font-size: 0.65rem;
   font-weight: 400;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(253, 243, 220, 0.6);
-  margin-top: -2px;
+  color: rgba(255, 248, 236, 0.5);
+  line-height: 1.4;
+}
+
+/* Footer logo */
+.footer-logo-img {
+  height: 72px;
+  width: auto;
+  display: block;
+  margin-bottom: var(--space-4);
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
 }
 
 .nav-links {
@@ -76,19 +93,29 @@
 
 .nav-dropdown {
   position: absolute;
-  top: calc(100%);
+  top: 100%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(-6px);
   background: var(--maroon-950);
   border: 1px solid rgba(232, 184, 75, 0.2);
   border-radius: var(--radius-md);
-  padding: var(--space-2) 0;
+  padding: var(--space-3) 0 var(--space-2);
   min-width: 200px;
   opacity: 0;
   pointer-events: none;
-  transform: translateX(-50%) translateY(-6px);
   transition: opacity 0.2s var(--ease-out), transform 0.2s var(--ease-out);
+  transition-delay: 0s;
   box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+}
+
+/* Invisible bridge fills the gap between nav link and dropdown */
+.nav-dropdown::after {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 0;
+  right: 0;
+  height: 12px;
 }
 
 .nav-item:hover .nav-dropdown,
@@ -96,6 +123,12 @@
   opacity: 1;
   pointer-events: all;
   transform: translateX(-50%) translateY(0);
+  transition-delay: 0s;
+}
+
+/* Small delay before hiding — forgiveness when mouse moves diagonally */
+.nav-item:not(:hover) .nav-dropdown {
+  transition-delay: 0.1s;
 }
 
 .nav-dropdown a {
@@ -224,6 +257,20 @@
   .nav-mobile { display: block; }
 }
 
+.footer-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  margin-bottom: var(--space-4);
+}
+.footer-logo-name {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--gold-400);
+}
+
 /* ── Footer ── */
 .footer {
   background: var(--maroon-950);
@@ -239,13 +286,24 @@
   margin-bottom: var(--space-16);
 }
 
-.footer-brand .logo {
+.footer-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  margin-bottom: var(--space-4);
+}
+.footer-logo-img {
+  height: 56px;
+  width: auto;
+  display: block;
+  flex-shrink: 0;
+}
+.footer-logo-name {
   font-family: var(--font-display);
   font-size: 2rem;
   font-weight: 600;
   color: var(--gold-400);
-  margin-bottom: var(--space-4);
-  display: block;
 }
 
 .footer-brand p {

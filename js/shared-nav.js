@@ -6,8 +6,11 @@ const NAV_HTML = `
     <div class="nav-inner">
 
       <a href="/index.html" class="nav-logo">
-        Valluvam
-        <span>Tamil Empowerment &amp; Solidarity</span>
+        <img src="/assets/images/logo.png" alt="Valluvam" class="nav-logo-img" />
+        <span class="nav-logo-text">
+          Valluvam
+          <em>Tamil Empowerment &amp; Solidarity</em>
+        </span>
       </a>
 
       <ul class="nav-links">
@@ -86,7 +89,10 @@ const FOOTER_HTML = `
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <span class="logo">Valluvam</span>
+        <a href="/index.html" class="footer-logo-wrap">
+          <img src="/assets/images/logo.png" alt="Valluvam" class="footer-logo-img" />
+          <span class="footer-logo-name">Valluvam</span>
+        </a>
         <p>A Canadian non-profit working to uplift Tamil communities in Sri Lanka through housing, children's welfare, and women's empowerment.</p>
         <p class="footer-tagline">Tamil Empowerment. Tamil Solidarity.</p>
         <div class="footer-social">
