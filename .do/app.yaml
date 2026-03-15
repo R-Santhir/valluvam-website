@@ -7,7 +7,7 @@ services:
   - name: web
     # DigitalOcean pulls directly from your GitHub repo
     github:
-      repo: YOUR-GITHUB-USERNAME/valluvam-website
+      repo: r-santhir/valluvam-website
       branch: main
       deploy_on_push: true
 
