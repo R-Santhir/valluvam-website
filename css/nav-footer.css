@@ -76,7 +76,7 @@
 
 .nav-dropdown {
   position: absolute;
-  top: calc(100% + 12px);
+  top: calc(100%);
   left: 50%;
   transform: translateX(-50%);
   background: var(--maroon-950);
