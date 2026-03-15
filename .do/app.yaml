@@ -15,6 +15,7 @@ services:
 
     # Step 2: start the Express server which serves _site/
     run_command: node server.js
+    output_dir: dist
 
     environment_slug: node-js
     instance_size_slug: basic-xxs

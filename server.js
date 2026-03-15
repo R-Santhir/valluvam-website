@@ -1,6 +1,6 @@
 /**
  * server.js — Static file server for DigitalOcean App Platform
- * Serves the built _site/ directory with proper routing.
+ * Serves the built dist/ directory with proper routing.
  */
 
 const express = require('express');
@@ -9,19 +9,19 @@ const fs      = require('fs');
 
 const app  = express();
 const PORT = process.env.PORT || 8080;
-const SITE = path.join(__dirname, '_site');
+const SITE = path.join(__dirname, 'dist');
 
 // ── Startup check ──────────────────────────────────────────
-// Fail immediately with a clear message if _site wasn't built
+// Fail immediately with a clear message if dist wasn't built
 if (!fs.existsSync(SITE)) {
-  console.error('❌ _site/ directory not found.');
+  console.error('❌ dist/ directory not found.');
   console.error('   Run "node build.js" before starting the server.');
   console.error(`   Expected path: ${SITE}`);
   process.exit(1);
 }
 
 if (!fs.existsSync(path.join(SITE, 'index.html'))) {
-  console.error('❌ _site/index.html not found — build may have failed.');
+  console.error('❌ dist/index.html not found — build may have failed.');
   process.exit(1);
 }
 
@@ -42,8 +42,8 @@ app.use(express.static(SITE, {
 }));
 
 // ── Clean URLs ─────────────────────────────────────────────
-// /about      → _site/about.html
-// /pages/xxx  → _site/pages/xxx.html
+// /about      → dist/about.html
+// /pages/xxx  → dist/pages/xxx.html
 app.use((req, res, next) => {
   // Strip trailing slash
   const cleanPath = req.path.replace(/\/$/, '') || '/';
