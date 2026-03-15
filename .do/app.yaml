@@ -1,0 +1,35 @@
+# DigitalOcean App Platform configuration
+# Docs: https://docs.digitalocean.com/products/app-platform/reference/app-spec/
+
+name: valluvam-website
+
+services:
+  - name: web
+    # DigitalOcean pulls directly from your GitHub repo
+    github:
+      repo: YOUR-GITHUB-USERNAME/valluvam-website
+      branch: main
+      deploy_on_push: true
+
+    # Build: run the static site generator
+    build_command: node build.js
+
+    # Serve: start the Express static server
+    run_command: node server.js
+
+    # Node.js environment
+    environment_slug: node-js
+
+    # Free tier is fine for a non-profit site
+    instance_size_slug: basic-xxs
+    instance_count: 1
+
+    # Port the Express server listens on
+    http_port: 8080
+
+    # Environment variables
+    envs:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "8080"

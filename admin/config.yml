@@ -1,10 +1,331 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Valluvam — Content Manager</title>
-  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
-</head>
-<body></body>
-</html>
+# ═══════════════════════════════════════════════
+# Valluvam — Netlify CMS Configuration
+# ═══════════════════════════════════════════════
+# Docs: https://www.netlifycms.org/docs/
+
+backend:
+  name: git-gateway
+  branch: main
+
+# Allow editors to save drafts without publishing
+publish_mode: editorial_workflow
+
+# Where uploaded images get stored
+media_folder: assets/images/uploads
+public_folder: /assets/images/uploads
+
+# ═══════════════════════════════════════════════
+# COLLECTIONS
+# Each collection = a section editors can manage
+# ═══════════════════════════════════════════════
+
+collections:
+
+  # ─────────────────────────────────────
+  # SITE SETTINGS (global content)
+  # ─────────────────────────────────────
+  - name: settings
+    label: Site Settings
+    description: "Global content — footer, contact details, social links"
+    files:
+
+      - name: general
+        label: General Settings
+        file: _data/settings.json
+        fields:
+          - { label: "Charity registration number", name: charity_number, widget: string, hint: "Appears in the footer" }
+          - { label: "Contact email", name: contact_email, widget: string }
+          - { label: "PayPal donation email", name: paypal_email, widget: string }
+          - { label: "CanadaHelps profile URL", name: canadahelps_url, widget: string }
+          - label: "Social media"
+            name: social
+            widget: object
+            fields:
+              - { label: "Instagram URL", name: instagram, widget: string }
+              - { label: "Facebook URL", name: facebook, widget: string }
+              - { label: "YouTube URL", name: youtube, widget: string }
+
+
+  # ─────────────────────────────────────
+  # DIRECTORS
+  # ─────────────────────────────────────
+  - name: directors
+    label: Directors
+    description: "Board of directors — add, edit, or remove director profiles"
+    folder: _data/directors
+    create: true
+    slug: "{{fields.name | slugify}}"
+    identifier_field: name
+    fields:
+      - { label: "Full name", name: name, widget: string }
+      - { label: "Role / title", name: role, widget: string, hint: "e.g. Director — BSc. (Mathematics)" }
+      - label: "Photo"
+        name: photo
+        widget: image
+        hint: "Square photo recommended. Will be cropped to a circle."
+      - { label: "Bio", name: bio, widget: text, hint: "2–3 sentences about this director." }
+      - { label: "LinkedIn URL", name: linkedin, widget: string, required: false }
+      - label: "Display order"
+        name: order
+        widget: number
+        default: 99
+        hint: "Lower numbers appear first. Set to order directors on the page."
+
+
+  # ─────────────────────────────────────
+  # PROGRAMS
+  # ─────────────────────────────────────
+  - name: programs
+    label: Programs
+    description: "Edit program descriptions, stats, and content"
+    files:
+
+      - name: kudil_mempadu
+        label: Kudil Mempadu
+        file: _data/programs/kudil-mempadu.json
+        fields:
+          - { label: "Page title", name: title, widget: string }
+          - { label: "Tag / category", name: tag, widget: string, default: "Housing Support" }
+          - { label: "Hero subtitle", name: subtitle, widget: text }
+          - { label: "Introduction (paragraph 1)", name: intro_1, widget: text }
+          - { label: "Introduction (paragraph 2)", name: intro_2, widget: text }
+          - { label: "Introduction (paragraph 3)", name: intro_3, widget: text }
+          - label: "Stats"
+            name: stats
+            widget: list
+            fields:
+              - { label: "Number / value", name: number, widget: string }
+              - { label: "Label", name: label, widget: string }
+          - label: "Hero image"
+            name: hero_image
+            widget: image
+            required: false
+
+      - name: kumaran_kudil
+        label: Kumaran Kudil
+        file: _data/programs/kumaran-kudil.json
+        fields:
+          - { label: "Page title", name: title, widget: string }
+          - { label: "Tag / category", name: tag, widget: string, default: "Children's Welfare" }
+          - { label: "Hero subtitle", name: subtitle, widget: text }
+          - { label: "Introduction (paragraph 1)", name: intro_1, widget: text }
+          - { label: "Introduction (paragraph 2)", name: intro_2, widget: text }
+          - { label: "Introduction (paragraph 3)", name: intro_3, widget: text }
+          - label: "Stats"
+            name: stats
+            widget: list
+            fields:
+              - { label: "Number / value", name: number, widget: string }
+              - { label: "Label", name: label, widget: string }
+
+      - name: ara_vali
+        label: Ara-Vali
+        file: _data/programs/ara-vali.json
+        fields:
+          - { label: "Page title", name: title, widget: string }
+          - { label: "Tag / category", name: tag, widget: string, default: "Refugee & Immigration Support" }
+          - { label: "Hero subtitle", name: subtitle, widget: text }
+          - { label: "Introduction (paragraph 1)", name: intro_1, widget: text }
+          - { label: "Introduction (paragraph 2)", name: intro_2, widget: text }
+          - { label: "Introduction (paragraph 3)", name: intro_3, widget: text }
+          - label: "Countries we operate in"
+            name: countries
+            widget: list
+            field:
+              label: Country
+              name: country
+              widget: string
+          - label: "Stats"
+            name: stats
+            widget: list
+            fields:
+              - { label: "Number / value", name: number, widget: string }
+              - { label: "Label", name: label, widget: string }
+
+      - name: malarum_mangaiyar
+        label: Malarum Mangaiyar
+        file: _data/programs/malarum-mangaiyar.json
+        fields:
+          - { label: "Page title", name: title, widget: string }
+          - { label: "Tag / category", name: tag, widget: string, default: "Women's Health" }
+          - { label: "Hero subtitle", name: subtitle, widget: text }
+          - { label: "Introduction (paragraph 1)", name: intro_1, widget: text }
+          - { label: "Introduction (paragraph 2)", name: intro_2, widget: text }
+          - { label: "Introduction (paragraph 3)", name: intro_3, widget: text }
+          - label: "Stats"
+            name: stats
+            widget: list
+            fields:
+              - { label: "Number / value", name: number, widget: string }
+              - { label: "Label", name: label, widget: string }
+
+
+  # ─────────────────────────────────────
+  # EVENTS
+  # ─────────────────────────────────────
+  - name: events
+    label: Events
+    description: "Add, edit, and archive events. New events appear on the Activities page."
+    folder: _data/events
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{fields.title | slugify}}"
+    identifier_field: title
+    sortable_fields: [date, title]
+    view_filters:
+      - label: Upcoming
+        field: status
+        pattern: upcoming
+      - label: Past
+        field: status
+        pattern: past
+    fields:
+      - { label: "Event title", name: title, widget: string }
+      - { label: "Date", name: date, widget: datetime, format: "YYYY-MM-DD" }
+      - label: "Status"
+        name: status
+        widget: select
+        options:
+          - { label: "Upcoming", value: upcoming }
+          - { label: "Past", value: past }
+      - label: "Type"
+        name: type
+        widget: select
+        options:
+          - { label: "In person", value: in-person }
+          - { label: "Virtual / online", value: virtual }
+          - { label: "Hybrid", value: hybrid }
+      - { label: "Location", name: location, widget: string, hint: "e.g. Toronto, ON or ZOOM · Virtual" }
+      - { label: "Description", name: description, widget: text }
+      - { label: "Sign up / registration URL", name: signup_url, widget: string, required: false }
+      - label: "Featured image"
+        name: image
+        widget: image
+        required: false
+
+
+  # ─────────────────────────────────────
+  # SUCCESS STORIES
+  # ─────────────────────────────────────
+  - name: stories
+    label: Success Stories
+    description: "Real stories from families Valluvam has supported. Appear on program pages."
+    folder: _data/stories
+    create: true
+    slug: "{{fields.title | slugify}}"
+    identifier_field: title
+    fields:
+      - { label: "Story title", name: title, widget: string, hint: "e.g. From Uncertainty to Hope: Selvi and Anjali's Journey" }
+      - { label: "Date / period", name: date, widget: string, hint: "e.g. May 2025" }
+      - label: "Related program"
+        name: program
+        widget: select
+        options:
+          - { label: "Ara-Vali", value: ara-vali }
+          - { label: "Kudil Mempadu", value: kudil-mempadu }
+          - { label: "Kumaran Kudil", value: kumaran-kudil }
+          - { label: "Malarum Mangaiyar", value: malarum-mangaiyar }
+      - { label: "Introduction", name: intro, widget: text, hint: "One sentence summary shown in previews." }
+      - { label: "Full story", name: body, widget: markdown }
+      - label: "Pull quotes (shown as highlighted quotes)"
+        name: pullquotes
+        widget: list
+        required: false
+        field:
+          label: Quote
+          name: quote
+          widget: text
+      - label: "Photo"
+        name: image
+        widget: image
+        required: false
+      - { label: "Publish this story", name: published, widget: boolean, default: true }
+
+
+  # ─────────────────────────────────────
+  # COMMUNITY PAGES
+  # ─────────────────────────────────────
+  - name: communities
+    label: Communities
+    description: "Edit content for each village and diaspora chapter page"
+    files:
+
+      - name: puthur_kathiraveli
+        label: Puthur-Kathiraveli
+        file: _data/communities/puthur-kathiraveli.json
+        fields:
+          - { label: "Page subtitle", name: subtitle, widget: text }
+          - { label: "About this community", name: about, widget: text }
+          - { label: "Key contacts", name: contacts, widget: text, required: false }
+          - label: "Hero image", name: image, widget: image, required: false
+
+      - name: karungkali_cholai
+        label: Karungkali Cholai
+        file: _data/communities/karungkali-cholai.json
+        fields:
+          - { label: "Page subtitle", name: subtitle, widget: text }
+          - { label: "About this community", name: about, widget: text }
+          - { label: "Key contacts", name: contacts, widget: text, required: false }
+          - label: "Hero image", name: image, widget: image, required: false
+
+      - name: kallaripu_verukal
+        label: Kallaripu-Verukal
+        file: _data/communities/kallaripu-verukal.json
+        fields:
+          - { label: "Page subtitle", name: subtitle, widget: text }
+          - { label: "About this community", name: about, widget: text }
+          - { label: "Key contacts", name: contacts, widget: text, required: false }
+          - label: "Hero image", name: image, widget: image, required: false
+
+      - name: medan
+        label: Medan Chapter
+        file: _data/communities/medan.json
+        fields:
+          - { label: "Page subtitle", name: subtitle, widget: text }
+          - { label: "About this chapter", name: about, widget: text }
+          - { label: "Key contacts", name: contacts, widget: text, required: false }
+          - label: "Hero image", name: image, widget: image, required: false
+
+      - name: bangkok
+        label: Bangkok Chapter
+        file: _data/communities/bangkok.json
+        fields:
+          - { label: "Page subtitle", name: subtitle, widget: text }
+          - { label: "About this chapter", name: about, widget: text }
+          - { label: "Key contacts", name: contacts, widget: text, required: false }
+          - label: "Hero image", name: image, widget: image, required: false
+
+      - name: kuala_lumpur
+        label: Kuala Lumpur Chapter
+        file: _data/communities/kuala-lumpur.json
+        fields:
+          - { label: "Page subtitle", name: subtitle, widget: text }
+          - { label: "About this chapter", name: about, widget: text }
+          - { label: "Key contacts", name: contacts, widget: text, required: false }
+          - label: "Hero image", name: image, widget: image, required: false
+
+
+  # ─────────────────────────────────────
+  # PHOTO GALLERY
+  # ─────────────────────────────────────
+  - name: gallery
+    label: Photo Gallery
+    description: "Add photos to the Activities page gallery. Set a category to filter correctly."
+    folder: _data/gallery
+    create: true
+    slug: "{{fields.title | slugify}}"
+    identifier_field: title
+    fields:
+      - { label: "Photo title / caption", name: title, widget: string }
+      - label: "Photo"
+        name: image
+        widget: image
+      - label: "Category"
+        name: category
+        widget: select
+        options:
+          - { label: "Kudil Mempadu (Housing)", value: housing }
+          - { label: "Kumaran Kudil (Children)", value: children }
+          - { label: "Ara-Vali (Refugee support)", value: women }
+          - { label: "Malarum Mangaiyar (Health)", value: health }
+          - { label: "Events", value: events }
+      - { label: "Alt text (for accessibility)", name: alt, widget: string, hint: "Describe what's in the photo for screen readers." }
