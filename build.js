@@ -230,7 +230,7 @@ console.log('📁 Copying static files…');
 fs.mkdirSync(DIST, { recursive: true });
 
 // Copy all HTML, CSS, JS, assets — but skip _data, admin source, node_modules, _site
-const SKIP = new Set(['_data', '_site', 'node_modules', '.git', 'build.js', 'package.json', 'package-lock.json', 'package-lock.json', 'server.js', '.do']);
+const SKIP = new Set(['_data', '_site', 'dist', 'public', 'node_modules', '.git', 'build.js', 'package.json', 'package-lock.json', 'server.js', '.do']);
 
 fs.readdirSync(ROOT).forEach(item => {
   if (SKIP.has(item)) return;
