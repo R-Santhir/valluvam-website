@@ -7,6 +7,11 @@
 </head>
 <body>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+  window.netlifyIdentity && window.netlifyIdentity.setAPIEndpoint(
+    "https://valluvam-cms-auth.netlify.app"
+  );
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
 </body>
 </html>

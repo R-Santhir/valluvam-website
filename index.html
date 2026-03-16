@@ -218,6 +218,9 @@
 
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <script>
+  window.netlifyIdentity && window.netlifyIdentity.setAPIEndpoint(
+    "https://valluvam-cms-auth.netlify.app"
+  );
   if (window.netlifyIdentity) {
     window.netlifyIdentity.on("init", user => {
       if (!user) {
