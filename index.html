@@ -216,22 +216,6 @@
   <div class="gallery-strip-item"><img src="assets/images/gallery-4.jpg" alt="Housing program" loading="lazy" /></div>
 </div>
 
-<script>
-  window.netlifyIdentityAPIEndpoint = "https://valluvam-cms-auth.netlify.app";
-</script>
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-<script>
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", user => {
-      if (!user) {
-        window.netlifyIdentity.on("login", () => {
-          document.location.href = "/admin/";
-        });
-      }
-    });
-  }
-</script>
-
 <script src="js/shared-nav.js"></script>
 </body>
 </html>
