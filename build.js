@@ -12,7 +12,7 @@ const path = require('path');
 
 const ROOT = __dirname;
 const DATA = path.join(ROOT, '_data');
-const DIST = path.join(ROOT, 'dist');
+const DIST = path.join(ROOT, 'public');
 
 /* ─── Helpers ─────────────────────────────────────────────── */
 
