@@ -256,7 +256,7 @@ collections:
           - { label: "Page subtitle", name: subtitle, widget: text }
           - { label: "About this community", name: about, widget: text }
           - { label: "Key contacts", name: contacts, widget: text, required: false }
-            label: "Hero image"
+          - label: "Hero image"
             name: image
             widget: image
             required: false
@@ -268,7 +268,7 @@ collections:
           - { label: "Page subtitle", name: subtitle, widget: text }
           - { label: "About this community", name: about, widget: text }
           - { label: "Key contacts", name: contacts, widget: text, required: false }
-            label: "Hero image"
+          - label: "Hero image"
             name: image
             widget: image
             required: false
@@ -280,7 +280,7 @@ collections:
           - { label: "Page subtitle", name: subtitle, widget: text }
           - { label: "About this community", name: about, widget: text }
           - { label: "Key contacts", name: contacts, widget: text, required: false }
-            label: "Hero image"
+          - label: "Hero image"
             name: image
             widget: image
             required: false
@@ -292,7 +292,7 @@ collections:
           - { label: "Page subtitle", name: subtitle, widget: text }
           - { label: "About this chapter", name: about, widget: text }
           - { label: "Key contacts", name: contacts, widget: text, required: false }
-            label: "Hero image"
+          - label: "Hero image"
             name: image
             widget: image
             required: false
@@ -304,7 +304,7 @@ collections:
           - { label: "Page subtitle", name: subtitle, widget: text }
           - { label: "About this chapter", name: about, widget: text }
           - { label: "Key contacts", name: contacts, widget: text, required: false }
-            label: "Hero image"
+          - label: "Hero image"
             name: image
             widget: image
             required: false
@@ -316,7 +316,7 @@ collections:
           - { label: "Page subtitle", name: subtitle, widget: text }
           - { label: "About this chapter", name: about, widget: text }
           - { label: "Key contacts", name: contacts, widget: text, required: false }
-            label: "Hero image"
+          - label: "Hero image"
             name: image
             widget: image
             required: false
