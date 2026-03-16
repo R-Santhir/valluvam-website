@@ -199,7 +199,7 @@ function buildProgramStats(stats) {
 function buildFooterLinks(settings) {
   return `
         <span>© ${new Date().getFullYear()} Valluvam. Registered non-profit, Canada.</span>
-        <span>Registered Charity No. ${esc(settings.charity_number || '[ADD YOUR NUMBER]')}</span>`;
+        <span>Registered Charity No. ${esc(settings.charity_number || '726289739RR0001')}</span>`;
 }
 
 /* ─── Replace injection markers in HTML ───────────────────── */
