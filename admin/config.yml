@@ -256,7 +256,10 @@ collections:
           - { label: "Page subtitle", name: subtitle, widget: text }
           - { label: "About this community", name: about, widget: text }
           - { label: "Key contacts", name: contacts, widget: text, required: false }
-          - label: "Hero image", name: image, widget: image, required: false
+            label: "Hero image"
+            name: image
+            widget: image
+            required: false
 
       - name: karungkali_cholai
         label: Karungkali Cholai
@@ -265,7 +268,10 @@ collections:
           - { label: "Page subtitle", name: subtitle, widget: text }
           - { label: "About this community", name: about, widget: text }
           - { label: "Key contacts", name: contacts, widget: text, required: false }
-          - label: "Hero image", name: image, widget: image, required: false
+            label: "Hero image"
+            name: image
+            widget: image
+            required: false
 
       - name: kallaripu_verukal
         label: Kallaripu-Verukal
@@ -274,7 +280,10 @@ collections:
           - { label: "Page subtitle", name: subtitle, widget: text }
           - { label: "About this community", name: about, widget: text }
           - { label: "Key contacts", name: contacts, widget: text, required: false }
-          - label: "Hero image", name: image, widget: image, required: false
+            label: "Hero image"
+            name: image
+            widget: image
+            required: false
 
       - name: medan
         label: Medan Chapter
@@ -283,7 +292,10 @@ collections:
           - { label: "Page subtitle", name: subtitle, widget: text }
           - { label: "About this chapter", name: about, widget: text }
           - { label: "Key contacts", name: contacts, widget: text, required: false }
-          - label: "Hero image", name: image, widget: image, required: false
+            label: "Hero image"
+            name: image
+            widget: image
+            required: false
 
       - name: bangkok
         label: Bangkok Chapter
@@ -292,7 +304,10 @@ collections:
           - { label: "Page subtitle", name: subtitle, widget: text }
           - { label: "About this chapter", name: about, widget: text }
           - { label: "Key contacts", name: contacts, widget: text, required: false }
-          - label: "Hero image", name: image, widget: image, required: false
+            label: "Hero image"
+            name: image
+            widget: image
+            required: false
 
       - name: kuala_lumpur
         label: Kuala Lumpur Chapter
@@ -301,7 +316,10 @@ collections:
           - { label: "Page subtitle", name: subtitle, widget: text }
           - { label: "About this chapter", name: about, widget: text }
           - { label: "Key contacts", name: contacts, widget: text, required: false }
-          - label: "Hero image", name: image, widget: image, required: false
+            label: "Hero image"
+            name: image
+            widget: image
+            required: false
 
 
   # ─────────────────────────────────────
