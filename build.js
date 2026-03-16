@@ -325,17 +325,17 @@ const siteCss   = path.join(DIST, 'css', 'design-system.css');
 const siteAssets = path.join(DIST, 'assets');
 
 if (!fs.existsSync(siteIndex)) {
-  console.error('❌ Build failed: _site/index.html missing');
+  console.error('❌ Build failed: public/index.html missing');
   process.exit(1);
 }
 if (!fs.existsSync(siteCss)) {
-  console.error('❌ Build failed: _site/css/design-system.css missing');
+  console.error('❌ Build failed: public/css/design-system.css missing');
   process.exit(1);
 }
 if (!fs.existsSync(siteAssets)) {
-  console.error('❌ Build failed: _site/assets/ missing');
+  console.error('❌ Build failed: public/assets/ missing');
   process.exit(1);
 }
 
 const pageCount = fs.readdirSync(DIST).filter(f => f.endsWith('.html')).length;
-console.log(`\n✅ Build complete → _site/  (${pageCount} root pages, assets copied)\n`);
+console.log(`\n✅ Build complete → public/  (${pageCount} root pages, assets copied)\n`);

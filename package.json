@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Valluvam — Tamil Empowerment & Solidarity",
   "scripts": {
-    "postinstall": "node build.js",
     "build": "node build.js",
     "start": "node server.js",
     "dev": "node build.js && node server.js"
