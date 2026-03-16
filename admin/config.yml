@@ -45,7 +45,6 @@ collections:
               - { label: "Facebook URL", name: facebook, widget: string }
               - { label: "YouTube URL", name: youtube, widget: string }
 
-
   # ─────────────────────────────────────
   # DIRECTORS
   # ─────────────────────────────────────
@@ -54,6 +53,7 @@ collections:
     description: "Board of directors — add, edit, or remove director profiles"
     folder: _data/directors
     create: true
+    format: json
     slug: "{{fields.name | slugify}}"
     identifier_field: name
     fields:
@@ -70,7 +70,6 @@ collections:
         widget: number
         default: 99
         hint: "Lower numbers appear first. Set to order directors on the page."
-
 
   # ─────────────────────────────────────
   # PROGRAMS
@@ -159,7 +158,6 @@ collections:
               - { label: "Number / value", name: number, widget: string }
               - { label: "Label", name: label, widget: string }
 
-
   # ─────────────────────────────────────
   # EVENTS
   # ─────────────────────────────────────
@@ -168,6 +166,7 @@ collections:
     description: "Add, edit, and archive events. New events appear on the Activities page."
     folder: _data/events
     create: true
+    format: json
     slug: "{{year}}-{{month}}-{{day}}-{{fields.title | slugify}}"
     identifier_field: title
     sortable_fields: [date, title]
@@ -202,7 +201,6 @@ collections:
         widget: image
         required: false
 
-
   # ─────────────────────────────────────
   # SUCCESS STORIES
   # ─────────────────────────────────────
@@ -211,6 +209,7 @@ collections:
     description: "Real stories from families Valluvam has supported. Appear on program pages."
     folder: _data/stories
     create: true
+    format: json
     slug: "{{fields.title | slugify}}"
     identifier_field: title
     fields:
@@ -239,7 +238,6 @@ collections:
         widget: image
         required: false
       - { label: "Publish this story", name: published, widget: boolean, default: true }
-
 
   # ─────────────────────────────────────
   # COMMUNITY PAGES
@@ -321,7 +319,6 @@ collections:
             widget: image
             required: false
 
-
   # ─────────────────────────────────────
   # PHOTO GALLERY
   # ─────────────────────────────────────
@@ -330,6 +327,7 @@ collections:
     description: "Add photos to the Activities page gallery. Set a category to filter correctly."
     folder: _data/gallery
     create: true
+    format: json
     slug: "{{fields.title | slugify}}"
     identifier_field: title
     fields:
