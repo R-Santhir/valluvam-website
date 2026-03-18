@@ -155,38 +155,40 @@ function buildEventCard(ev) {
   let eventMedia = '';
   if (photos.length === 1) {
     eventMedia = `
-      <div style="height:160px;overflow:hidden;border-radius:6px 6px 0 0;margin:-24px -24px 16px;background:var(--maroon-800);">
+      <div style="height:200px;overflow:hidden;border-radius:var(--radius-md) var(--radius-md) 0 0;background:var(--maroon-800);">
         <img src="${esc(photos[0])}" alt="${esc(ev.title)}" style="width:100%;height:100%;object-fit:cover;opacity:0.85;" loading="lazy" />
       </div>`;
   } else if (photos.length > 1) {
     const thumbs = photos.map(p => `
-      <div style="flex:0 0 120px;height:90px;overflow:hidden;border-radius:4px;background:var(--maroon-800);">
+      <div style="flex:0 0 140px;height:100px;overflow:hidden;border-radius:4px;background:var(--maroon-800);">
         <img src="${esc(p)}" alt="${esc(ev.title)}" style="width:100%;height:100%;object-fit:cover;opacity:0.85;" loading="lazy" />
       </div>`).join('');
     eventMedia = `
-      <div style="display:flex;gap:6px;overflow-x:auto;margin:-24px -24px 16px;padding:0 16px;scrollbar-width:none;-webkit-overflow-scrolling:touch;">
+      <div style="display:flex;gap:6px;overflow-x:auto;padding:var(--space-3);border-radius:var(--radius-md) var(--radius-md) 0 0;background:var(--maroon-950);scrollbar-width:none;-webkit-overflow-scrolling:touch;">
         ${thumbs}
       </div>`;
   }
-  return `
+    return `
         <div class="event-card reveal"${featured}>
           ${eventMedia}
-          <div class="event-date-block"${darkDate}>
-            <span class="month">${mon}</span>
-            <span class="day">${day}</span>
-            <span class="year">${year}</span>
-          </div>
-          <div class="event-info">
-            <span class="event-tag ${statusClass}">${statusLabel}</span>${typeTag}
-            <h4>${esc(ev.title)}</h4>
-            <p>${esc(ev.description)}</p>
-            <div class="event-meta">
-              <span class="event-meta-item">
-                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                ${esc(ev.location)}
-              </span>
+          <div style="display:grid; grid-template-columns:64px 1fr; gap:var(--space-5); align-items:flex-start; padding:var(--space-6);">
+            <div class="event-date-block"${darkDate}>
+              <span class="month">${mon}</span>
+              <span class="day">${day}</span>
+              <span class="year">${year}</span>
             </div>
-            ${signup}
+            <div class="event-info">
+              <span class="event-tag ${statusClass}">${statusLabel}</span>${typeTag}
+              <h4>${esc(ev.title)}</h4>
+              <p>${esc(ev.description)}</p>
+              <div class="event-meta">
+                <span class="event-meta-item">
+                  <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  ${esc(ev.location)}
+                </span>
+              </div>
+              ${signup}
+            </div>
           </div>
         </div>`;
 }
