@@ -196,21 +196,40 @@ function buildEventsHTML(events) {
   return events.map(buildEventCard).join('\n');
 }
 
-function buildGalleryHTML(gallery) {
-  const items = gallery.map(item => `
-        <div class="photo-gallery-item reveal" data-category="${esc(item.category)}">
-          <img src="${esc(item.image)}" alt="${esc(item.alt || item.title)}" loading="lazy" />
+function buildGalleryHTML(gallery, events) {
+  // Combine CMS gallery entries with event photos
+  const eventPhotos = [];
+  events.forEach(ev => {
+    const photos = ev.photos
+      ? (Array.isArray(ev.photos) ? ev.photos : [ev.photos])
+      : ev.image
+        ? (Array.isArray(ev.image) ? ev.image : [ev.image])
+        : [];
+    photos.forEach(p => {
+      if (p) eventPhotos.push({
+        image: p,
+        alt: ev.title,
+        category: 'events'
+      });
+    });
+  });
+
+  const allItems = [...gallery, ...eventPhotos];
+
+  const items = allItems.map(item => `
+        <div class="photo-gallery-item reveal" data-category="${esc(item.category || 'events')}">
+          <img src="${esc(item.image)}" alt="${esc(item.alt || item.title || '')}" loading="lazy" />
           <div class="photo-gallery-item-overlay">
             <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           </div>
         </div>`).join('\n');
 
-  const placeholder = `
+  const placeholder = allItems.length === 0 ? `
       <div class="gallery-add-note">
-        <strong>To add photos:</strong> use the CMS at <code>/admin</code> → Photo Gallery, or place images in <code>assets/images/gallery/</code> and add entries via the CMS.
-      </div>`;
+        <strong>To add photos:</strong> use the CMS at <code>/admin</code> → Photo Gallery, or add events with photos.
+      </div>` : '';
 
-  return items + (gallery.length === 0 ? placeholder : '');
+  return items + placeholder;
 }
 
 function buildProgramStats(stats) {
@@ -297,7 +316,7 @@ processPage('about.html', 'about.html', {
 /* activities.html — events + gallery */
 processPage('activities.html', 'activities.html', {
   'events':  buildEventsHTML(events),
-  'gallery': buildGalleryHTML(gallery),
+  'gallery': buildGalleryHTML(gallery, events),
 });
 
 /* Program pages — stats */
