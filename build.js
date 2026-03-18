@@ -146,15 +146,10 @@ function buildEventCard(ev) {
   // Photo strip — supports single image or multiple photos array
   let photos = [];
   if (ev.photos) {
-    if (Array.isArray(ev.photos)) {
-      photos = ev.photos;
-    } else if (typeof ev.photos === 'string' && ev.photos.length) {
-      // CMS sometimes saves multiple images as comma-separated string
-      photos = ev.photos.split(',').map(p => p.trim()).filter(Boolean);
-    }
+    photos = Array.isArray(ev.photos) ? ev.photos : [ev.photos];
   }
   if (!photos.length && ev.image) {
-    photos = [ev.image];
+    photos = Array.isArray(ev.image) ? ev.image : [ev.image];
   }
 
   let eventMedia = '';
