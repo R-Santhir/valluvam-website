@@ -13,6 +13,7 @@ const path = require('path');
 const ROOT = __dirname;
 const DATA = path.join(ROOT, '_data');
 const DIST = path.join(ROOT, 'public');
+const CLOUDINARY = 'https://res.cloudinary.com/dmo6kngo3/image/upload';
 
 /* ─── Helpers ─────────────────────────────────────────────── */
 
@@ -109,9 +110,14 @@ const communities = {
 
 function buildDirectorCard(d, delay) {
   const delayClass = delay ? ` animate-delay-${delay}` : '';
-  const photo = d.photo
-    ? `<img src="${esc(d.photo)}" alt="${esc(d.name)}" />`
-    : `<div class="director-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>`;
+  const photoSrc = d.photo
+  ? (d.photo.startsWith('http')
+      ? d.photo
+      : `${CLOUDINARY}/valluvam/directors/${d.photo}`)
+  : null;
+  const photo = photoSrc
+  ? `<img src="${esc(photoSrc)}" alt="${esc(d.name)}" />`
+  : `<div class="director-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>`;
   const linkedin = d.linkedin
     ? `<div class="director-social"><a href="${esc(d.linkedin)}" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></div>`
     : '';

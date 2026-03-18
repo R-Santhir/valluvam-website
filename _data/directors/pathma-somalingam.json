@@ -1,1 +1,8 @@
-{"name":"Dr. Pathma Somalingam","role":"Director — Medical Doctor","photo":"/assets/images/directors/pathma.png","bio":"A physician with deep roots in the Tamil community, Dr. Pathma brings invaluable medical expertise to Valluvam's board, particularly in guiding our women's health and community welfare programs.","linkedin":"","order":8}
+{
+  "name":"Dr. Pathma Somalingam",
+  "role":"Director — Medical Doctor",
+  "photo":"https://res.cloudinary.com/dmo6kngo3/image/upload/v1773868068/pathma_rxajx2.png",
+  "bio":"A physician with deep roots in the Tamil community, Dr. Pathma brings invaluable medical expertise to Valluvam's board, particularly in guiding our women's health and community welfare programs.",
+  "linkedin":"",
+  "order":8
+}

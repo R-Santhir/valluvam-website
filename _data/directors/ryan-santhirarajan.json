@@ -1,1 +1,8 @@
-{"name":"Ryan Santhirarajan","role":"Director","photo":"/assets/images/directors/ryan.png","bio":"Ryan brings energy and a fresh perspective to Valluvam's board, contributing to the organisation's growing presence among the next generation of Tamil diaspora activists.","linkedin":"","order":5}
+{
+  "name":"Ryan Santhirarajan",
+  "role":"Director",
+  "photo":"https://res.cloudinary.com/dmo6kngo3/image/upload/v1773868068/ryan_peq7de.png",
+  "bio":"Ryan brings energy and a fresh perspective to Valluvam's board, contributing to the organisation's growing presence among the next generation of Tamil diaspora activists.",
+  "linkedin":"",
+  "order":5
+}
