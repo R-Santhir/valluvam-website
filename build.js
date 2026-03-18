@@ -143,52 +143,24 @@ function buildEventCard(ev) {
   const signup      = ev.signup_url
     ? `<a href="${esc(ev.signup_url)}" class="btn btn-primary" target="_blank" rel="noopener" style="margin-top:var(--space-3); padding:0.5rem 1.25rem; font-size:0.8125rem;">Sign Up</a>`
     : '';
-  // Photo strip — supports single image or multiple photos array
-  let photos = [];
-  if (ev.photos) {
-    photos = Array.isArray(ev.photos) ? ev.photos : [ev.photos];
-  }
-  if (!photos.length && ev.image) {
-    photos = Array.isArray(ev.image) ? ev.image : [ev.image];
-  }
-
-  let eventMedia = '';
-  if (photos.length === 1) {
-    eventMedia = `
-      <div style="height:200px;overflow:hidden;border-radius:var(--radius-md) var(--radius-md) 0 0;background:var(--maroon-800);">
-        <img src="${esc(photos[0])}" alt="${esc(ev.title)}" style="width:100%;height:100%;object-fit:cover;opacity:0.85;" loading="lazy" />
-      </div>`;
-  } else if (photos.length > 1) {
-    const thumbs = photos.map(p => `
-      <div style="flex:0 0 140px;height:100px;overflow:hidden;border-radius:4px;background:var(--maroon-800);">
-        <img src="${esc(p)}" alt="${esc(ev.title)}" style="width:100%;height:100%;object-fit:cover;opacity:0.85;" loading="lazy" />
-      </div>`).join('');
-    eventMedia = `
-      <div style="display:flex;gap:6px;overflow-x:auto;padding:var(--space-3);border-radius:var(--radius-md) var(--radius-md) 0 0;background:var(--maroon-950);scrollbar-width:none;-webkit-overflow-scrolling:touch;">
-        ${thumbs}
-      </div>`;
-  }
-    return `
+  return `
         <div class="event-card reveal"${featured}>
-          ${eventMedia}
-          <div style="display:grid; grid-template-columns:64px 1fr; gap:var(--space-5); align-items:flex-start; padding:var(--space-6);">
-            <div class="event-date-block"${darkDate}>
-              <span class="month">${mon}</span>
-              <span class="day">${day}</span>
-              <span class="year">${year}</span>
+          <div class="event-date-block"${darkDate}>
+            <span class="month">${mon}</span>
+            <span class="day">${day}</span>
+            <span class="year">${year}</span>
+          </div>
+          <div class="event-info">
+            <span class="event-tag ${statusClass}">${statusLabel}</span>${typeTag}
+            <h4>${esc(ev.title)}</h4>
+            <p>${esc(ev.description)}</p>
+            <div class="event-meta">
+              <span class="event-meta-item">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                ${esc(ev.location)}
+              </span>
             </div>
-            <div class="event-info">
-              <span class="event-tag ${statusClass}">${statusLabel}</span>${typeTag}
-              <h4>${esc(ev.title)}</h4>
-              <p>${esc(ev.description)}</p>
-              <div class="event-meta">
-                <span class="event-meta-item">
-                  <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  ${esc(ev.location)}
-                </span>
-              </div>
-              ${signup}
-            </div>
+            ${signup}
           </div>
         </div>`;
 }
