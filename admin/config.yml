@@ -200,10 +200,14 @@ collections:
       - { label: "Location", name: location, widget: string, hint: "e.g. Toronto, ON or ZOOM · Virtual" }
       - { label: "Description", name: description, widget: text }
       - { label: "Sign up / registration URL", name: signup_url, widget: string, required: false }
-      - label: "Featured image"
-        name: image
-        widget: image
+      - label: "Photos"
+        name: photos
+        widget: list
         required: false
+        field:
+          label: Photo
+          name: photo
+          widget: image
 
   # ─────────────────────────────────────
   # SUCCESS STORIES

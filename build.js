@@ -143,8 +143,30 @@ function buildEventCard(ev) {
   const signup      = ev.signup_url
     ? `<a href="${esc(ev.signup_url)}" class="btn btn-primary" target="_blank" rel="noopener" style="margin-top:var(--space-3); padding:0.5rem 1.25rem; font-size:0.8125rem;">Sign Up</a>`
     : '';
+  // Photo strip — supports single image or multiple photos array
+  const photos = (ev.photos && ev.photos.length)
+    ? ev.photos
+    : (ev.image ? [ev.image] : []);
+
+  let eventMedia = '';
+  if (photos.length === 1) {
+    eventMedia = `
+      <div style="height:160px;overflow:hidden;border-radius:6px 6px 0 0;margin:-24px -24px 16px;background:var(--maroon-800);">
+        <img src="${esc(photos[0])}" alt="${esc(ev.title)}" style="width:100%;height:100%;object-fit:cover;opacity:0.85;" loading="lazy" />
+      </div>`;
+  } else if (photos.length > 1) {
+    const thumbs = photos.map(p => `
+      <div style="flex:0 0 120px;height:90px;overflow:hidden;border-radius:4px;background:var(--maroon-800);">
+        <img src="${esc(p)}" alt="${esc(ev.title)}" style="width:100%;height:100%;object-fit:cover;opacity:0.85;" loading="lazy" />
+      </div>`).join('');
+    eventMedia = `
+      <div style="display:flex;gap:6px;overflow-x:auto;margin:-24px -24px 16px;padding:0 16px;scrollbar-width:none;-webkit-overflow-scrolling:touch;">
+        ${thumbs}
+      </div>`;
+  }
   return `
         <div class="event-card reveal"${featured}>
+          ${eventMedia}
           <div class="event-date-block"${darkDate}>
             <span class="month">${mon}</span>
             <span class="day">${day}</span>
