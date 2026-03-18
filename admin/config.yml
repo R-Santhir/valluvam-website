@@ -11,7 +11,11 @@ backend:
 publish_mode: editorial_workflow
 
 # Where uploaded images get stored
-media_folder: assets/images/uploads
+media_folder:
+  name: cloudinary
+  config:
+    cloud_name: dmo6kngo3
+    upload_preset: droy1bhs
 public_folder: /assets/images/uploads
 
 # ═══════════════════════════════════════════════
