@@ -144,9 +144,18 @@ function buildEventCard(ev) {
     ? `<a href="${esc(ev.signup_url)}" class="btn btn-primary" target="_blank" rel="noopener" style="margin-top:var(--space-3); padding:0.5rem 1.25rem; font-size:0.8125rem;">Sign Up</a>`
     : '';
   // Photo strip — supports single image or multiple photos array
-  const photos = (ev.photos && ev.photos.length)
-    ? ev.photos
-    : (ev.image ? [ev.image] : []);
+  let photos = [];
+  if (ev.photos) {
+    if (Array.isArray(ev.photos)) {
+      photos = ev.photos;
+    } else if (typeof ev.photos === 'string' && ev.photos.length) {
+      // CMS sometimes saves multiple images as comma-separated string
+      photos = ev.photos.split(',').map(p => p.trim()).filter(Boolean);
+    }
+  }
+  if (!photos.length && ev.image) {
+    photos = [ev.image];
+  }
 
   let eventMedia = '';
   if (photos.length === 1) {
