@@ -37,27 +37,24 @@ valluvam/
 
 ## Getting Started
 
-### 1. Add your images
-Export photos from Wix (Settings → Media Manager → download).
-Rename and place them in `assets/images/` matching the filenames above.
-Recommended dimensions: hero images at 1400×900px minimum, card images at 800×500px.
-
-### 2. Open locally
-Just open `index.html` in a browser — no build step needed for the base HTML/CSS.
-
-### 3. Deploy to Netlify
-1. Push this folder to a GitHub repository
-2. Log in to netlify.com → "Add new site" → "Import from Git"
-3. Select your repo, leave build settings blank (no build command needed for plain HTML)
-4. Click Deploy — your site will be live in ~1 minute
-5. Go to Domain Settings → add `valluvam.ca` as a custom domain
-6. Update your DNS at your domain registrar: add a CNAME record pointing to your Netlify subdomain
-
-### 4. Update charity number
-In `index.html` footer, replace `[ADD YOUR NUMBER]` with your registered charity number.
-
-### 5. Update social links
-In `index.html` footer and nav, confirm the Instagram/Facebook/YouTube URLs are correct.
+### Adding images
+Images are hosted on cloudinary, these assets are linked to this website.
+They are stored in the following directory structure:
+valluvam
+├── communities
+│   ├── bangkok
+│   ├── kallaripu-verukal
+│   ├── karungkali-cholai
+│   ├── kuala-lumpur
+│   ├── medan
+│   ├── puthur-kathiraveli
+├── directors
+├── events
+├── programs
+│   ├── ara-vali
+│   ├── kudil-mempadu
+│   ├── kumaran-kudil
+│   ├── malarum-mangaiyar
 
 ## Design System
 
@@ -69,13 +66,3 @@ Colors are defined as CSS variables in `css/design-system.css`:
 Fonts:
 - **Cormorant Garamond** — headings (display serif, free via Google Fonts)
 - **Outfit** — body text (clean, modern sans-serif, free via Google Fonts)
-
-## Pages Still to Build
-- [ ] about.html
-- [ ] programs.html
-- [ ] activities.html
-- [ ] support.html
-- [ ] pages/kudil-mempadu.html
-- [ ] pages/kumaran-kudil.html
-- [ ] pages/ara-vali.html
-- [ ] pages/malarum-mangaiyar.html
