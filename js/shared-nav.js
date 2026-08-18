@@ -134,7 +134,7 @@ const FOOTER_HTML = `
           <li><a href="/volunteer.html">Volunteer</a></li>
           <li><a href="/collaboration.html">Collaborate</a></li>
           <li><a href="/support.html#other-ways">Thrift Store</a></li>
-          <li><a href="mailto:info@valluvam.ca">Contact Us</a></li>
+          <li><a href="mailto:admin@valluvam.ca">Contact Us</a></li>
         </ul>
       </div>
     </div>
